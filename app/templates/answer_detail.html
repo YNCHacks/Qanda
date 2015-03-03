@@ -1,0 +1,9 @@
+<tr>
+    <th>{{ question.question }}</th>
+    <td>{% if question.answer != None %}
+        {{ question.answer }}
+        {% else %}
+        <a href="{{ url_for('answer', questionid=question.id) }}">Answer the question</a> {% endif %}
+    </td>
+    <td>{{ question.created_at.strftime("%H:%M %Y-%m-%d") }}</td>
+</tr>

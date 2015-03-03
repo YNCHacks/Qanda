@@ -1,0 +1,9 @@
+<tr>
+    <th>{{ question.question }}</th>
+    <td>{% if question.answer != None %}
+        {{ question.answer }}
+        {% else %}
+        <a href="{{ url_for('answer', questionid=question.id) }}">Answer the question</a> {% endif %}
+    </td>
+    <td>{{ momentjs(question.created_at).fromNow() }}</td>
+</tr>

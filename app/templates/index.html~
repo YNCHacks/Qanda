@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+{% block content %}
+{% include "flash.html" %}
+<div class="bs-example">
+<table class="table table-hover table-striped table-condensed">
+    <thead>
+        <th>Question</th>
+        <th>Context</th>
+        <th>Answer</th>
+        <th>Date</th>
+    </thead>
+    <tbody>
+    {% for question in questions %}
+        {% include "answer_detail.html" %}
+    {% endfor %}
+    </tbody>
+</table>
+</div>
+
+{% endblock %}
+

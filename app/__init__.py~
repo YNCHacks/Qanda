@@ -1,0 +1,23 @@
+from flask import Flask
+from flask.ext.mongoengine import MongoEngine
+from .momentjs import momentjs
+from twilio.rest import TwilioRestClient
+
+twilio_account = "ACb8546d376a7d984c89d810df9efc64cc"
+twilio_token = "a3a94470caba204e0d5ba55c29bd01b3"
+
+application = Flask(__name__)
+application.config["MONGODB_SETTINGS"] = {"DB": "mchammer"}
+application.config["SECRET_KEY"] = "S3Cr3T"
+application.config.from_object("config")
+application.jinja_env.globals["momentjs"] = momentjs
+
+db = MongoEngine(application)
+twilio_client = TwilioRestClient(twilio_account, twilio_token)
+
+
+if __name__ == "__main__":
+    application.run(host="0.0.0.0")
+
+#last line to avoid improt errors
+from app import views, models
